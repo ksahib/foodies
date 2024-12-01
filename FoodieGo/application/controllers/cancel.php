@@ -10,7 +10,7 @@ class Order {
         $this->db = $database->getConnection();
     }
     
-    public function order() {
+    public function cancel() {
         // Database query for active food items
         // $sql = "SELECT f.*, c.title as category_name 
         // FROM food f 
@@ -30,7 +30,7 @@ class Order {
         // $data['food_items'] = $food_items;
         // $data['siteurl'] = SITEURL;
         // extract($data); // This makes variables available to the view
-        require_once 'application/views/order/order.php';
+        require_once 'application/views/order/cancel.php';
     }
     
     public function details($id) {

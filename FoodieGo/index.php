@@ -10,7 +10,8 @@ require_once 'system/database/DB_config.php';
 $request = $_SERVER['REQUEST_URI'];
 $base_path = '/FoodieGo/';
 $request = str_replace($base_path, '', $request);
-
+echo $request;
+$request = parse_url($request, PHP_URL_PATH);
 // Basic routing
 switch ($request) {
     case '':
@@ -31,6 +32,18 @@ switch ($request) {
         $controller = new Auth();
         $controller->logout();
         break;
+
+    case 'order':
+        require 'application/controllers/order.php';
+        $controller = new Order();
+        $controller->order();
+        break;
+
+        case 'cancel':
+            require 'application/controllers/order.php';
+            $controller = new Cancel();
+            $controller->cancel();
+            break;
         
     default:
         http_response_code(404);
